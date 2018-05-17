@@ -1,0 +1,17 @@
+/*-------RODAPÉ---------*/
+#rodape
+{
+    text-align: center;
+    color: #000000;
+    font-family: Arial, Verdana, Tahoma;
+    font-size: 10px;
+    height: 78px;
+    padding: 20px 0 0 0;
+    background: url(../imagens/bg_rodape.jpg) repeat-x;
+}
+
+#rodape a:link
+{
+    color: #000000;
+}
+

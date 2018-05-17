@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Sistema Web de Monografia</title>
+    </h:head>
+    <body>
+        <ui:include src="/masterPageMenu.xhtml" />
+        <div id="divmaior" align="center">
+            <h:form id="frmPesqMono" prependId="false" style="width: 700px;text-align: center">
+                <p:growl id="pmsgMono"/>
+                <p:panel id="rplMono" header="B D T D M - Cadastro de Programa" >
+                    <div align="left">
+                        <h:panelGrid columns="2" style="azimuth: left">
+                            <h:outputLabel id="oplNome" value="Nome:" for="iptNome"></h:outputLabel>
+                            <p:inputText id="iptNome" required="true" requiredMessage="Informe nome!" value="#{programasControle.programas.nomeprograma}" style="width:500px"></p:inputText>
+                        </h:panelGrid>
+                    </div>
+                    <div align="center">
+                        <h:panelGrid columns="2">
+                            <h:commandButton id="btnInc" title="Incluir" value="Incluir" actionListener="#{programasControle.incluirPrograma}" styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                            <h:commandButton id="btnCon" title="Consultar" value="Consultar" styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                        </h:panelGrid>
+                    </div>
+                    <br/>
+                    <div>
+                        <p:dataTable var="programa" value="#{programasControle.listarProgramasDataModel}" emptyMessage="Nenhum registro encontrado" paginator="true" rows="6" paginatorTemplate="{PageLinks}" >
+                            <p:column>
+                                <f:facet name="header">
+                                    Código
+                                </f:facet>
+                                <h:outputText value="#{programa.codigo}" />
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    Nome
+                                </f:facet>
+                                <h:outputText value="#{programa.nomeprograma}"/>
+                            </p:column>
+                            <p:column>
+                                <p:commandLink value="Alterar  "/>
+                                <p:commandLink value="  Excluir" onclick="confirmation.show()" />
+                                <p:confirmDialog message="Deseja realmente excluir?" showEffect="clip" hideEffect="fold" severity="alert" widgetVar="confirmation">
+                                    <p:commandButton value="Sim" update="messages" oncomplete="confirmation.hide()" />
+                                    <p:commandButton value="Não" onclick="confirmation.hide()" type="button" />
+                                </p:confirmDialog>
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+                </p:panel>
+            </h:form>
+        </div>
+    </body>
+</html>
+

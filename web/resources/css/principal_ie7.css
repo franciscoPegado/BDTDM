@@ -1,0 +1,174 @@
+body 
+{
+    margin: 0 auto;
+    font-family:Arial;
+    color:#000000;
+}
+
+input { text-transform: uppercase; border: solid 1px #cccccc; font-size: 10px; padding: 2px 0 0 5px; }
+
+table tr td { padding: 1px 0; }
+
+fieldset, select { border: solid 1px #cccccc; }
+
+fieldset legend { padding: 0 5px; font-weight: bold; color: #003366; height: 10px; }
+
+input.file
+{
+    -moz-opacity: 0;
+}
+
+select
+{
+    font-size: 10px;
+    border: solid 1px #cccccc;
+    padding: 0 0 0 2px;
+}
+
+.padrao
+{
+    border: solid 1px #a9a8a7;
+}
+
+.obrigatorio
+{
+    color: #000000;
+}
+
+.naoobrigatorio
+{
+    color: #f4f4f4;
+}
+
+.destaque
+{
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.offline
+{
+    background-color: #f8f8ff;
+}
+
+div#geral {
+    width:990px;
+    margin:0 auto;
+}
+
+h1 {
+    margin:0;
+}
+
+h2
+{
+    color: #000000;
+    font-weight: normal;
+    margin: 30px 0 3px 0;
+    letter-spacing: .04em;
+}
+
+p {
+    margin:0;
+}
+
+
+a:link
+{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:visited
+{
+    text-decoration: none;
+    color: #666666;
+}
+
+a:hover
+{
+    color: #000066;
+}
+
+.texto
+{
+    font-family: Arial, Verdana, Tahoma;
+    font-size: 12px;
+}
+
+.filtros
+{
+    height: 20px;
+    padding: 7px 0 0 0;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.tbl .td
+{
+    background-color: #f1f5f6;
+    font-weight: bold;
+}
+
+.tbl .tdDiv
+{
+    border-right: solid 1px #c1cfd8;
+    width:320px;
+    border-left: none;
+    border-bottom: none;
+    border-top: none;
+}
+
+.incluido
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: #990000;
+}
+
+.btn
+{
+    font-size: 12px;
+    font-family: Arial;
+    background-color: #f4f4f4;
+    border: solid 1px #027f45;
+}
+
+.btnOff
+{
+    font-size: 12px;
+    font-family: Arial;
+    background-color: #f4f4f4;
+    border: solid 1px #f4f4f4;
+}
+
+.btnCancelar
+{
+    border: none;
+    background-color: #ffffff;
+    font-size: 9px;
+    width: 90px;
+    color: #0000CC;
+    text-decoration: underline;
+}
+
+td.cabecalho
+{
+    font-weight: bold;
+    background-color: #027f45;
+    /*border: solid 1px #ccc;*/
+    color: #fff;
+    padding: 5px 0;
+    font-family: Arial, Verdana, Tahoma;
+}
+
+td.corpo
+{
+    background-color: #fff;
+    border-bottom: solid 1px #ccc;
+    color: #000;
+    padding: 5px 0;
+    font-family: Arial, Verdana, Tahoma;
+}

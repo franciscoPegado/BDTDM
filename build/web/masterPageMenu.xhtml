@@ -1,0 +1,29 @@
+<ui:fragment xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:form>
+        <p:menubar autoSubmenuDisplay="true" style="width: 800px;">
+            <p:submenu label="Página Inicial" icon="ui-icon ui-icon-home" />
+            <p:submenu label="Monografia" icon="ui-icon ui-icon-document" >
+                <p:menuitem value="Cadastro" url="/faces/admin/frmMono.xhtml"
+                            styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                <p:menuitem value="Pesquisa" url="/faces/admin/frmPesqMono.xhtml"
+                            styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                <p:menuitem value="Download" url="/faces/admin/frmDownMono.xhtml"
+                            styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+            </p:submenu>
+            <p:submenu label="Linha de Pesquisa" icon="ui-icon ui-icon-document">
+                <p:menuitem value="Cadastro" url="/faces/admin/frmLinhaPesq.xhtml"
+                            styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+            </p:submenu>
+            <p:submenu label="Programas" icon="ui-icon ui-icon-document">
+                <p:menuitem value="Cadastro" url="/faces/admin/frmProg.xhtml"
+                            styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+            </p:submenu>
+            <p:submenu label="Sair" icon="ui-icon ui-icon-close" />
+        </p:menubar>
+    </h:form>
+</ui:fragment>
+

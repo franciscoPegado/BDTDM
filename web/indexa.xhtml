@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:head>
+        <title>GEMONO - Gerenciador de Monografias da ESPCE</title>
+        <link rel="shortcut icon" href="./imagens/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="./imagens/favicon.ico" type="image/x-icon" />
+    </h:head>
+
+    <h:body id="bdLogin">
+        <div align="center">
+            <!--<p:growl id="avisos" showDetail="false" life="3000"/>-->
+            <p:panel id="pnlLogin" style="text-align: center; width: 400px" header="GEMONO - WEB LOGIN">
+                <div align="center">
+                    <h:form id="frmImagem"  prependId="false" >
+                        <h:panelGrid id="pgdLoginOne" columns="1">
+                            <h:panelGroup id="pgpLoginOne">
+                                <img src="./imagens/acesso.png" alt="GEMONO" title="GEMONO"/>
+                            </h:panelGroup>
+                        </h:panelGrid><p/>
+                    </h:form>
+                </div>
+                <div align="center">
+                    <h:form id="frmLogin"  prependId="false" >
+                        <h:panelGrid id="pngdLogin" columns="2">
+                            <h:outputLabel id="oplCpf" value="CPF:" for="iptCpf"/>
+                            <p:inputMask id="iptCpf" mask="999.999.999-99" value="#{usuarioControle.usuarios.cpf}" alt="cpf" required="true"
+                                         requiredMessage="CPF não informado">
+                            </p:inputMask>
+                            <h:outputLabel id="oplSenha" value="Senha:" for="iptSenha"/>
+                            <h:inputSecret id="iptSenha" value="#{usuarioControle.usuarios.senha}" alt="Senha" required="true"
+                                           requiredMessage="Senha não Informada" styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all"/>
+                        </h:panelGrid>
+                        <p/>
+                        <h:commandButton id="cmbEnviar" value="Entrar" action="#{usuarioControle.Login}"
+                                         styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"/>
+                    </h:form>
+                </div>
+            </p:panel>
+        </div>
+    </h:body>
+
+</html>
+

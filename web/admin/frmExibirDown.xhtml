@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Sistema Web de Monografia</title>
+    </h:head>
+    <body>
+        <div id="divmaior" align="center" >
+            <ui:include src="/masterPageMenu.xhtml" /><br/>
+
+            <p:panel id="rplMono" header="B D T D M - Dissertação" style="width: 1000px">
+                <div align="center">
+                    <h:form id="frmMono2" prependId="false" style=" width:1000px;text-align: left">
+                        <h:panelGrid columns="2" style="azimuth: left">
+                            <h:outputLabel value="Linha de Pesquisa:" style="text-align: left"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.linhaspesquisa}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Programa:"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.programas}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Título:" for="iptTitPt" style="text-align: left"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.tlptbr}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Título Inglês:" for="iptTitEn"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.tlpeng}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Autor:" for="iptAutor"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.autor}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Orientador:" for="iptOri"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.orientador}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Co-orientador:" for="iptCoOri" />
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.coorientador}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Banca Examinadora:" for="iptBanExam"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.bncex}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Data da Defesa:" for="iptDatDef" />
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.datadefesa}" style="text-align: left" />
+                            </p:fieldset>
+                            <h:outputLabel value="Assunto:" for="iptAss"/>
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.resumo}" style="text-align: left;width: 700px;height: 200px"/>
+                            </p:fieldset>
+                            <h:outputLabel value="Abstract:" for="iptAbs" />
+                            <p:fieldset style="width: 750px">
+                                <h:outputLabel value="#{monografiaControle.monografias.abstractresumo}" style="text-align: left;width: 700px;height: 200px" />
+                            </p:fieldset>
+                        </h:panelGrid>
+                        <br></br>
+                        <p:fieldset style="width: 910px">
+                            <div>
+                                <h:panelGrid columns="1">
+                                    <h:outputLabel value="Termo para Download" style="font-size: x-large"></h:outputLabel>
+                                </h:panelGrid>
+                            </div><br/>
+                            <div>
+                                <h:panelGrid columns="1">
+                                    <h:outputLabel value="O Autor desta obra é o titular dos direitos autorais. Este trabalho destina-se somente para uso pessoal ou científico. Está poribida a comercialização de qualquer espécie sem autorização prévia do autor."></h:outputLabel>
+                                </h:panelGrid>
+                            </div>
+                            <div>
+                                <h:panelGrid columns="1">
+                                    <p:growl id="pmsgMono"/>
+                                    <h:selectManyCheckbox required="true" requiredMessage="Para visualizar o arquivo você deve aceitar as condições do contrato!">
+                                        <f:selectItem id="si6" itemLabel="li e concordo com as condiçoes acima" itemValue="0" noSelectionOption="false" />
+                                    </h:selectManyCheckbox>
+                                </h:panelGrid>
+                            </div><br/>
+                            <div align="left">
+                                <h:panelGrid columns="1">
+                                    <h:graphicImage title="Visualizar" value="/resources/imagens/pdf.jpg" />
+                                    <p:commandLink ajax="false" value="Abrir" action="#{monografiaControle.abrirArquivo}" title="Visualizar">
+                                    </p:commandLink>
+                                </h:panelGrid>
+                            </div>
+                        </p:fieldset>
+                    </h:form><br/>
+                    <h:form>
+                        <div align="center">
+                            <h:panelGrid columns="1">
+                                <h:commandButton id="btnbus" title="Voltar" value="Voltar" action="/faces/admin/frmDownMono.xhtml" styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                            </h:panelGrid>
+                        </div>
+                    </h:form>
+                </div>
+            </p:panel>
+        </div>
+    </body>
+</html>
+

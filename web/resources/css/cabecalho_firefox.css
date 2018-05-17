@@ -1,0 +1,83 @@
+/*------CLASSES DAS FONTES------*/
+.arial_11_branca { font-size:11px; color:#FFF;}
+.arial_10_center { font-size:10px; text-align:center;}
+
+/*-------TOPO---------*/
+div#topo {
+    margin: 0px;
+}
+
+div#barra_verde_top {
+    background:url(../imagens/bg_topo_verde.jpg) repeat-x;
+    height:45px;
+}
+
+div#barra_verde_top div{
+    height:45px;
+}
+
+div div#campo_data {
+    background:url(../imagens/bg_data.jpg) no-repeat left bottom;
+    float:left;
+}
+
+div div#campo_data p {
+    margin:15px 0 15px 20px;
+}
+
+div div#brasao_governo {
+    float:right;
+    background:url(../imagens/brasao_gov_ce.jpg) no-repeat;
+    width:146px;
+}
+div#logo {
+    background:url(../imagens/back_ondas.jpg) no-repeat right bottom;
+    height:46px;
+    padding:0;
+}
+
+div#logo h1 {
+    background:url(../imagens/logoesp.jpg) no-repeat;
+    text-indent:-5000px;
+    height:46px;
+}
+
+div#menu_atalhos {
+    background:url(../imagens/barra_cinza.jpg) no-repeat;
+    height:6px;
+}
+
+div#menu_atalhos div {
+    height:33px;
+}
+
+div div#atalhos {
+    width:220px;
+    float:right;
+}
+
+#atalhos div#atalho_home,
+#atalhos div#atalho_contatos,
+#atalhos div#atalho_mapa {
+    width:25px;
+    height:25px;
+    float:left;
+    margin:10px;
+}
+
+#atalhos div#atalho_home {
+    margin-left:63px;
+    margin-top:5px;
+}
+#atalhos div#atalho_contatos {
+    margin-left:19px;
+    margin-top:5px;
+}
+#atalhos div#atalho_mapa {
+    margin-right:21px;
+    margin-top:5px;
+}
+#atalhos div#atalho_mapa {
+    float:right;
+}
+

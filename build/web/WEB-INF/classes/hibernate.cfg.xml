@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5433/selecao</property>
+    <property name="hibernate.connection.username">francisco.pegado</property>
+    <property name="hibernate.connection.password">sinueh12</property>
+    <!-- Echo all executed SQL to stdout -->
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    <property name="use_sql_comments">true</property>
+    <!-- Drop or re-create or validate the database schema on startup
+        <property name="hibernate.hbm2ddl.auto">validate</property>-->
+    <!-- Máximo de conexões no pool -->
+    <property name="connection.pool_size">20</property>
+    <!-- Mapeamento de pojos -->
+    <mapping class="br.gov.ce.esp.pojos.Usuarios"/>
+    <mapping class="br.gov.ce.esp.pojos.Monografias"/>
+    <mapping class="br.gov.ce.esp.pojos.Programas"/>
+    <mapping class="br.gov.ce.esp.pojos.Linhaspesquisa"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Sistema Web de Monografia</title>
+    </h:head>
+    <h:body id="bdLogin">
+        <div id="geral" align="center">
+            <div style="height: 100px">
+                <ui:insert >
+                    <ui:include src="/masterPageCabecalho.xhtml" />
+                </ui:insert>
+            </div>
+            <div align="center" >
+                <ui:include src="/masterPageMenu.xhtml" /><br/>
+            </div>
+            <h:form id="frmMono" prependId="false" >
+                <div align="center">
+                    <p:growl id="avisos" showDetail="false" life="5000"/>
+                    <p:panel id="rplMono" header="B D T D M - Cadastro de Monografias" style="width: 800px">
+                        <h:panelGrid columns="2" style="azimuth: left">
+
+                            <h:outputLabel id="optLinPesq" value="Linha de Pesquisa:&nbsp;&nbsp;&nbsp;" />
+                            <h:selectOneMenu id="iptLinhaPes" value="#{monografiaControle.linhasPesquisa.codigo}"
+                                             style="width:567px;azimuth: left;" styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all">
+                                <f:selectItems value="#{monografiaControle.listarPesquisa}" />
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Programa:" style="text-align: left"/>
+                            <h:selectOneMenu  id="iptProg"  value="#{monografiaControle.programas.codigo}" style="width:570px;azimuth: left"
+                                              styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all">
+                                <f:selectItems value="#{monografiaControle.listarPrograma}" />
+                            </h:selectOneMenu>
+
+                            <h:outputLabel id="oplTitPt" value="Título:" for="iptTitPt" style="text-align: left"/>
+                            <p:inputText id="iptTitPt" required="true" requiredMessage="Preencha Título!"  style="width:560px" value="#{monografiaControle.monografias.tlptbr}"/>
+                            <h:outputLabel id="oplTitEn" value="Título Inglês:" for="iptTitEn"/>
+                            <p:inputText id="iptTitEn" required="true" requiredMessage="Preencha Título em Inglês!" style="width:560px" value="#{monografiaControle.monografias.tlpeng}"/>
+                            <h:outputLabel value="Autor:" for="iptAutor"/>
+                            <p:inputText id="iptAutor" required="true" requiredMessage="Preencha Autor!" style="width:560px" value="#{monografiaControle.monografias.autor}"/>
+                            <h:outputLabel value="Orientador:" for="iptOri"/>
+                            <p:inputText id="iptOri"  required="true" requiredMessage="Preencha Orientador!" style="width:560px" value="#{monografiaControle.monografias.orientador}"></p:inputText>
+                            <h:outputLabel value="Co-orientador:" for="iptCoOri" ></h:outputLabel>
+                            <p:inputText id="iptCoOri" required="true" requiredMessage="Preencha Co-orientador!" style="width:560px" value="#{monografiaControle.monografias.coorientador}"></p:inputText>
+                            <h:outputLabel value="Banca Examinadora:" for="iptBanExam"></h:outputLabel>
+                            <p:inputText id="iptBanExam" required="true" requiredMessage="Preencha Banca Examinadora!" style="width:560px" value="#{monografiaControle.monografias.bncex}"></p:inputText>
+                            <h:outputLabel value="Data da Defesa:" for="iptDatDef" ></h:outputLabel>
+                            <p:calendar id="iptDatDef" size="8" style="width:120px" pattern="dd/MM/yyyy" value="#{monografiaControle.monografias.datadefesa}"></p:calendar>
+                            <h:outputLabel value="Assunto:" for="iptAss"></h:outputLabel>
+                            <p:inputTextarea id="iptAss" required="true" requiredMessage="Preencha Assunto!" style="width:560px;height: 60px" value="#{monografiaControle.monografias.resumo}"></p:inputTextarea>
+                            <h:outputLabel value="Abstract:" for="iptAbs"></h:outputLabel>
+                            <p:inputTextarea id="iptAbs" required="true" requiredMessage="Preencha Abstract!" style="width:560px;height: 60px" value="#{monografiaControle.monografias.abstractresumo}"></p:inputTextarea>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:commandButton id="btnInc" title="Incluir" value="Incluir" rendered="true" actionListener="#{monografiaControle.incluir}"
+                                             styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                            <h:commandButton id="btnReset" value="Limpar" type="reset"
+                                             styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+            </h:form>
+            <div>
+                <ui:insert >
+                    <ui:include src="/masterPageRodape.xhtml" />
+                </ui:insert>
+            </div>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Escola de Sa&uacute;de P&uacute;blica do Cear&aacute;</title>
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="escola, escola de saude, escola de saúde, governo, estado, ceará, ceara, governo estado ceara, governo estado cear�, saude, secretaria sa�de, sa�de, secretaria saude estado ceara, secretaria sa�de estado cear�, sesa, joomla" />
+        <meta name="description" content="Escola de Sa&uacute;de P&uacute;blica do Cear&aacute;" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="resources/css/cabecalho_firefox.css" type="text/css" />
+        <!--[if IE]>
+            <link rel="stylesheet" href="resources/css/cabecalho_ie7.css" type="text/css" />
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <div id="divmaior" align="center">
+            <ui:include src="/masterPageMenu.xhtml" /><br/>
+            <h:form id="frmPesqMono" prependId="false" style="width: 810px;text-align: center">
+                <p:panel id="rplMono" header="B D T D M - Busca Simples" >
+                    <div align="left">
+                        <h:outputLabel id="oplPesqMono" value="Busca por titulo:"/>
+                        <h:panelGrid columns="2" style="azimuth: left">
+                            <p:inputText id="iptPesMono" value="#{monografiaControle.desc}" style="width:600px"/>
+                            <h:commandButton id="btnPesMono" title="Buscar" value="Buscar" actionListener="#{monografiaControle.PesquisaMonografias}"
+                                             styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                        </h:panelGrid>
+                    </div>
+                </p:panel>
+            </h:form><br/><br/>
+            <p:layoutUnit position="center">
+                <p:growl id="avisos" showDetail="false" life="5000"/>
+                <h:form id="frmDataMono" prependId="false" style="width: 810px;text-align: center;">
+                    <p:dataTable id="dtMonografia"  value="#{monografiaControle.model}" var="mono" style="text-align:center; width:auto;"
+                                 emptyMessage="Nenhum registro encontrado" paginator="true" rows="6" paginatorTemplate="{PageLinks}" >
+                        <f:facet name="header">
+                            <h:outputText value="BDTDM CADASTRADOS"/>
+                        </f:facet>
+                        <p:column id="clmTitulo">
+                            <f:facet name="header">
+                                Título
+                            </f:facet>
+                            <h:outputLabel value="#{mono.tlptbr}" style="text-transform: uppercase;"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Enviar Arquivo
+                            </f:facet>
+                            <p:commandLink actionListener="#{monografiaControle.selectedRowMonografia}"
+                                           value="Arquivo" oncomplete="chamaUpload.show()" style="color: blue"/>
+                        </p:column>
+                        <p:column id="clmeditar">
+                            <p:commandLink actionListener="#{monografiaControle.prepararAlterar}" value="Alterar"
+                                           update="infoUpProduto,frmtabelaproduto" oncomplete="dialogAlterarMono.show()"/>&nbsp;
+                            <p:commandLink actionListener="#{monografiaControle.excluir}" value="Excluir" update="frmDataMono,avisos"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <h:outputText rendered="#{monografiaControle.model.rowCount > 0} "
+                                          value="Quantidades de Registros: #{monografiaControle.model.rowCount}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+            <h:form id="frmUpMonografia" prependId="false">
+                <p:dialog id="dialogUpMonografia" header="Atualizar Monografia" widgetVar="dialogAlterarMono" resizable="false" modal="true" showEffect="slide" width="640">
+                    <h:panelGrid id="infoUpMonografia" columns="2" style="margin-bottom:10px">
+                        <h:outputLabel id="optLinPesq" value="Linha de Pesquisa:&nbsp;&nbsp;&nbsp;" />
+                        <h:selectOneMenu id="iptLinhaPes" value="#{monografiaControle.linhasPesquisa.codigo}" disabled="true"
+                                         binding="#{monografiaControle.selectOneMenuLinhasPesquisas}"
+                                         style="width:200px;azimuth: left;" styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all">
+                            <f:selectItem itemLabel="--Selecione--" />
+                            <f:selectItems value="#{monografiaControle.listarPesquisa}" />
+                        </h:selectOneMenu>
+                        <h:outputLabel value="Programa:" style="text-align: left"/>
+                        <h:selectOneMenu  id="iptProg"  value="#{monografiaControle.programas.codigo}" style="width:200px;azimuth: left" binding="#{monografiaControle.selectOneMenuPrograma}"
+                                          styleClass="ui-inputfield ui-widget ui-state-default ui-corner-all">
+                            <f:selectItem id="si0" itemLabel="--Selecione--" />
+                            <f:selectItems value="#{monografiaControle.listarPrograma}" />
+                        </h:selectOneMenu>
+                        <!--<h:outputLabel id="oplTitPt" value="Título:" for="iptTitPt" style="text-align: left"/>
+                        <p:inputText id="iptTitPt" required="true" disabled="true" requiredMessage="Preencha Título!"  style="width:200px" value="#{monografiaControle.monografias.tlptbr}"/>
+                        <h:outputLabel id="oplTitEn" value="Título Inglês:" for="iptTitEn"/>
+                        <p:inputText id="iptTitEn" required="true" requiredMessage="Preencha Título em Inglês!" style="width:560px" value="#{monografiaControle.monografias.tlpeng}"/>
+                        <h:outputLabel value="Autor:" for="iptAutor"/>
+                        <p:inputText id="iptAutor" required="true" requiredMessage="Preencha Autor!" style="width:560px" value="#{monografiaControle.monografias.autor}"/>
+                        <h:outputLabel value="Orientador:" for="iptOri"/>
+                        <p:inputText id="iptOri"  required="true" requiredMessage="Preencha Orientador!" style="width:560px" value="#{monografiaControle.monografias.orientador}"/>
+                        <h:outputLabel value="Co-orientador:" for="iptCoOri" />
+                        <p:inputText id="iptCoOri" required="true" requiredMessage="Preencha Co-orientador!" style="width:560px" value="#{monografiaControle.monografias.coorientador}"/>
+                        <h:outputLabel value="Banca Examinadora:" for="iptBanExam"/>
+                        <p:inputText id="iptBanExam" required="true" requiredMessage="Preencha Banca Examinadora!" style="width:560px" value="#{monografiaControle.monografias.bncex}"/>
+                        <h:outputLabel value="Data da Defesa:" for="iptDatDef"/>
+                        <p:calendar id="iptDatDef" size="8" style="width:120px" pattern="dd/MM/yyyy" value="#{monografiaControle.monografias.datadefesa}"/>
+                        <h:outputLabel value="Assunto:" for="iptAss"/>
+                        <p:inputTextarea id="iptAss" required="true" requiredMessage="Preencha Assunto!" style="width:560px;height: 60px" value="#{monografiaControle.monografias.resumo}"/>
+                        <h:outputLabel value="Abstract:" for="iptAbs"/>
+                        <p:inputTextarea id="iptAbs" required="true" requiredMessage="Preencha Abstract!" style="width:560px;height: 60px" value="#{monografiaControle.monografias.abstractresumo}"/>-->
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+            <h:form id="frmUpProduto" prependId="false">
+                <p:dialog id="dialogUpMono" header="Gerenciador de Arquivos" widgetVar="chamaUpload" resizable="false" modal="true" width="800" >
+                    <h:panelGrid>
+                        <p:messages id="avisosUp" showDetail="false" />
+                    </h:panelGrid>
+                    <h:panelGrid>
+                        <p:fileUpload auto="true" label="Selecionar..." allowTypes="*.pdf;" sizeLimit="000000" fileUploadListener="#{monografiaControle.fileUploadAction}" rendered="true" />
+                    </h:panelGrid>
+                    <br></br>
+                </p:dialog>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

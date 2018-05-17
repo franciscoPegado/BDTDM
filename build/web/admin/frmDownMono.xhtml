@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <title>Escola de Sa&uacute;de P&uacute;blica do Cear&aacute;</title>
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="escola, escola de saude, escola de saúde, governo, estado, ceará, ceara, governo estado ceara, governo estado cear�, saude, secretaria sa�de, sa�de, secretaria saude estado ceara, secretaria sa�de estado cear�, sesa, joomla" />
+        <meta name="description" content="Escola de Sa&uacute;de P&uacute;blica do Cear&aacute;" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="resources/css/cabecalho_firefox.css" type="text/css" />
+        <!--[if IE]>
+            <link rel="stylesheet" href="resources/css/cabecalho_ie7.css" type="text/css" />
+        <![endif]-->
+    </h:head>
+    <h:body>
+        <div align="center">
+            <ui:include src="/masterPageMenu.xhtml" /><br/>
+            <div align="center" style="width: 790px; height: 600px">
+                <h:form id="frmDtMono" prependId="false" >
+                    <p:growl id="pmsgMono" showDetail="false" life="5000" />
+                    <p:panel id="rplMono" header="B D T D M - Busca no Acervo" style="width: 800px" >
+                        <p:layoutUnit id="lunit" position="center" style="width: 750px">
+                            <p:dataTable id="dtmono" var="pro" value="#{monografiaControle.listarMonografias}" emptyMessage="Nenhum registro encontrado" paginator="true" rows="6" paginatorTemplate="{PageLinks}" style="text-align: center" >
+                                <p:column>
+                                    <f:facet name="header">
+                                        Autor
+                                    </f:facet>
+                                    <h:outputText value="#{pro.autor}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Título
+                                    </f:facet>
+                                    <h:commandLink value="#{pro.tlptbr}" action="#{monografiaControle.selectedRowMonografia}" style="color: blue"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        Data da Defesa
+                                    </f:facet>
+                                    <h:outputText value="#{pro.datadefesa}" />
+                                </p:column>
+                            </p:dataTable>
+                            <div align="center">
+                                <h:panelGrid columns="3">
+                                    <h:commandButton id="btnbus" title="Voltar" value="Voltar" action="/faces/admin/frmPesqMono.xhtml" styleClass="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-focus"/>
+                                </h:panelGrid>
+                            </div>
+                        </p:layoutUnit>
+                    </p:panel>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>
+
